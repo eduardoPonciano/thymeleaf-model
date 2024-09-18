@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Estudantes</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style type="text/css">
+		tr:first-child {
+			font-weight: bold;
+			background-color: #c6c9c4;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h2>Todos Registros de Estudantes</h2>
+
+		<!-- Display success -->
+		<div th:if="${success}" class="alert alert-success" role="alert">
+			<span th:text="${success}"></span>
+		</div>
+
+		<hr />
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th>ID</th>
+					<th>Nome</th>
+					<th>Turma</th>
+					<th>Editar</th>
+					<th>Apagar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="student : ${allstudents}">
+					<form th:action="@{/student/{id}(id=${student.id})}" method="post">
+						<td th:text="${student.id}"></td>
+						<td th:text="${student.name}"></td>
+						<td th:text="${student.grade}"></td>
+						<td><a th:href="@{/edit/{id}(id=${student.id})}">Editar</a></td>
+						<input type="hidden" id="_method" name="_method" th:value="DELETE" />
+						<td>
+							<input class="btn btn-danger" type="submit" th:value="Apagar" />
+						</td>
+					</form>
+				</tr>
+			</tbody>
+		</table>
+		<hr />
+		<div class="form-group">
+			<a class="btn btn-secondary" th:href="@{/new}">Criar Novo Estudante</a>
+		</div>
+	</div>
+</body>
+
+</html>

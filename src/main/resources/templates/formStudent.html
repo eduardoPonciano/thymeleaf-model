@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Cadastro de Estudante</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<style>
+		.error {
+			color: #ff0000;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<h2>
+			<span th:text="${edit ? 'Edição do cadastro do Estudante' : 'Cadastro de Estudante'}">
+		</h2>
+
+		 <div th:if="${validationErrors != null}" th:text="${validationErrors['name']}">
+			 
+		 </div>
+   
+		<!-- Display error message  -->
+		<div th:if="${error}" class="alert alert-danger" role="alert">
+			<span th:text="${error}"></span>
+		</div>
+		<hr />
+
+		<form id="studentForm" th:object="${student}" method="post" class="form-horizontal"
+			th:action="${edit} ? @{/student/{id}(id=${student.id})} : @{/student}">
+			<!-- Campo oculto para suportar PUT -->
+			<input type="hidden" id="_method" name="_method" th:value="${edit ? 'PUT' : 'POST'}" />
+
+			<!-- Outros campos do formulário -->
+			<div class="form-group">
+				<label for="name">Nome</label>
+				<input type="text" th:field="*{name}" id="name" class="form-control" />
+				<div class="error" th:if="${validationErrors != null} and ${validationErrors['name'] != null}" 
+					th:text="${validationErrors['name']}"></div>
+			</div>
+
+			<div class="form-group">
+				<label for="grade">Turma</label>
+				<input type="text" th:field="*{grade}" id="grade" class="form-control" />
+				<div class="error" th:if="${validationErrors != null} and ${validationErrors['grade'] != null}" 
+					th:text="${validationErrors['grade']}"></div>
+			</div>
+
+			<button type="submit" class="btn btn-primary" th:text="${edit ? 'Atualizar' : 'Salvar'}"></button>
+		</form>
+
+
+	</div>
+
+</body>
+
+</html>
