@@ -9,7 +9,7 @@ Este é um projeto de exemplo que demonstra como criar um CRUD (Create, Read, Up
 - Spring MVC
 - Dados armazenados em memória
 # Arquitetura MVC
-![Descrição da imagem](https://github.com/eduardoPonciano/thymeleaf-model/blob/main/docs/img/arch.png)
+![Descrição da imagem](https://github.com/eduardoPonciano/thymeleaf-model/blob/main/docs/img/MVC.png)
 
 # Funcionalidades
 - CRUD (Create, Read, Update, Delete) para o objeto Estudante
