@@ -7,7 +7,6 @@ Este é um projeto de exemplo que demonstra como criar um CRUD (Create, Read, Up
 - Thymeleaf
 - Spring Web
 - Spring MVC
-- Lombok
 - Dados armazenados em memória
 # Arquitetura MVC
 ![Descrição da imagem](https://github.com/eduardoPonciano/thymeleaf-model/blob/main/docs/img/arch.png)
